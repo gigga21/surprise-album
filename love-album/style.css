@@ -1,0 +1,999 @@
+/* =====================================================
+   RESET
+===================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    /* iPhone Fix: Removes the grey tap highlight */
+    -webkit-tap-highlight-color: transparent; 
+}
+
+:root{
+    --bg:#F7F3EE;
+    --card:#FFFCF8;
+    --text:#2E2E2E;
+    --light:#80766D;
+    --gold:#C7A36A;
+    --shadow:0 20px 60px rgba(0,0,0,.08);
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    overflow-x:hidden;
+}
+
+/* =====================================================
+SCROLLBAR
+===================================================== */
+
+::-webkit-scrollbar{
+    width:10px;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#d8cab8;
+    border-radius:50px;
+}
+
+::-webkit-scrollbar-track{
+    background:#f7f3ee;
+}
+
+/* =====================================================
+GENERAL
+===================================================== */
+
+img{
+    width:100%;
+    display:block;
+}
+
+button{
+    font-family:inherit;
+    cursor:pointer;
+    border:none;
+}
+
+/* =====================================================
+LOADER
+===================================================== */
+
+#loader{
+    position:fixed;
+    inset:0;
+    background:#f7f3ee;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:99999;
+}
+
+.loader-box{
+    text-align:center;
+}
+
+.loader-heart{
+    font-size:70px;
+    animation:heartbeat 1s infinite;
+}
+
+.loader-box h1{
+    font-family:'Cormorant Garamond',serif;
+    margin-top:25px;
+    font-size:46px;
+}
+
+.progress{
+    width:260px;
+    height:8px;
+    background:#e8ddd1;
+    border-radius:30px;
+    margin:35px auto;
+    overflow:hidden;
+}
+
+.progress span{
+    display:block;
+    height:100%;
+    width:0;
+    background:linear-gradient(90deg,#D5B37A,#E8C89D);
+    animation:loading 2.5s forwards;
+}
+
+/* =====================================================
+LANDING
+===================================================== */
+
+#landing{
+    /* iPhone Fix: dvh prevents the address bar from hiding content */
+    min-height:100dvh; 
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+.floating-envelope{
+    animation:float 3s ease-in-out infinite;
+}
+
+.envelope{
+    width:170px;
+    height:170px;
+    border-radius:40px;
+    background:white;
+    box-shadow:var(--shadow);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.envelope i{
+    font-size:65px;
+    color:var(--gold);
+}
+
+#landing h1{
+    margin-top:50px;
+    font-family:'Cormorant Garamond',serif;
+    font-size:72px;
+}
+
+#landing p{
+    margin-top:18px;
+    color:var(--light);
+    line-height:1.9;
+    text-align:center;
+    font-size:18px;
+}
+
+#openLetter{
+    margin-top:45px;
+    padding:18px 45px;
+    border-radius:50px;
+    background:#2d2d2d;
+    color:white;
+    font-size:17px;
+    transition:.35s;
+}
+
+#openLetter:hover{
+    transform:translateY(-6px);
+    box-shadow:0 15px 40px rgba(0,0,0,.15);
+}
+
+/* =====================================================
+LETTER
+===================================================== */
+
+#introLetter{
+    display:none;
+    /* iPhone Fix */
+    min-height:100dvh; 
+    justify-content:center;
+    align-items:center;
+    padding:40px;
+}
+
+.paper{
+    width:700px;
+    max-width:95%;
+    background:white;
+    border-radius:35px;
+    padding:70px;
+    box-shadow:var(--shadow);
+}
+
+.date{
+    color:var(--light);
+    font-size:14px;
+}
+
+.paper h2{
+    margin:20px 0;
+    font-family:'Cormorant Garamond',serif;
+    font-size:56px;
+}
+
+.paper p{
+    font-family:'Caveat',cursive;
+    font-size:34px;
+    line-height:1.8;
+}
+
+#continueAlbum{
+    margin-top:45px;
+    background:#222;
+    color:white;
+    padding:16px 38px;
+    border-radius:50px;
+}
+
+/* =====================================================
+ALBUM
+===================================================== */
+
+#album{
+    display:none;
+    padding:35px 50px 80px;
+}
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:60px;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    font-family:'Cormorant Garamond',serif;
+    font-size:42px;
+    font-weight:600;
+}
+
+.nav-right button{
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    background:white;
+    box-shadow:var(--shadow);
+    font-size:22px;
+    transition:.35s;
+}
+
+.nav-right button:hover{
+    transform:rotate(25deg) scale(1.08);
+}
+
+header{
+    text-align:center;
+    margin-bottom:70px;
+}
+
+header h1{
+    font-family:'Cormorant Garamond',serif;
+    font-size:74px;
+    margin-bottom:12px;
+}
+
+header p{
+    color:var(--light);
+    font-size:18px;
+    line-height:1.8;
+}
+
+/* =====================================================
+MASONRY
+===================================================== */
+
+.masonry{
+    column-count:4;
+    column-gap:25px;
+}
+
+@media(max-width:1300px){
+    .masonry{
+        column-count:3;
+    }
+}
+
+@media(max-width:900px){
+    .masonry{
+        column-count:2;
+    }
+}
+
+@media(max-width:650px){
+    .masonry{
+        column-count:1;
+    }
+}
+
+/* =====================================================
+PINS
+===================================================== */
+
+.pin{
+    display:inline-block;
+    width:100%;
+    margin-bottom:25px;
+    break-inside:avoid;
+    cursor:pointer;
+    transition: transform .55s cubic-bezier(.22,1,.36,1), box-shadow .55s ease;
+}
+
+.pin:hover{
+    transform:translateY(-8px);
+}
+
+.photo{
+    background:#fff;
+    border-radius:26px;
+    overflow:hidden;
+    box-shadow:0 18px 40px rgba(0,0,0,.10);
+    transition:all .45s cubic-bezier(.22,1,.36,1);
+}
+
+.photo img{
+    width:100%;
+    display:block;
+    height:auto;
+    transition:transform .7s ease;
+}
+
+.photo:hover img{
+    transform:scale(1.05);
+}
+
+.photo:hover{
+    transform:translateY(-10px);
+    box-shadow:0 30px 60px rgba(0,0,0,.18);
+}
+
+.caption{
+    padding:18px 22px;
+    background:#fff;
+    font-size:22px;
+    font-family:'Cormorant Garamond',serif;
+    font-weight:700;
+    color:#222;
+}
+
+.large img{
+    width:100%;
+    height:auto;
+    display:block;
+}
+
+/* =====================================================
+STICKY NOTE
+===================================================== */
+
+.sticky{
+    background:#fff2b8;
+    padding:40px;
+    border-radius:18px;
+    transform:rotate(-3deg);
+    box-shadow:var(--shadow);
+    text-align:center;
+}
+
+.sticky h3{
+    margin-top:18px;
+    font-size:28px;
+    font-family:'Cormorant Garamond',serif;
+}
+
+/* =====================================================
+QUOTE
+===================================================== */
+
+.quote{
+    background:white;
+    border-radius:28px;
+    padding:45px;
+    box-shadow:var(--shadow);
+}
+
+.quote h2{
+    font-size:56px;
+    margin-bottom:25px;
+}
+
+.quote p{
+    font-family:'Caveat',cursive;
+    font-size:34px;
+    line-height:1.7;
+}
+
+/* =====================================================
+PAPER NOTE
+===================================================== */
+
+.paper-note-inner{
+    background:#fffdf8;
+    border-radius:25px;
+    padding:40px;
+    box-shadow:var(--shadow);
+}
+
+.paper-note-inner span{
+    font-size:42px;
+}
+
+.paper-note-inner h3{
+    margin:18px 0;
+    font-family:'Cormorant Garamond',serif;
+    font-size:34px;
+}
+
+.paper-note-inner p{
+    font-family:'Caveat',cursive;
+    font-size:32px;
+    line-height:1.8;
+}
+
+/* =====================================================
+YELLOW STICKY
+===================================================== */
+
+.sticky-yellow{
+    background:#FFE98A;
+    border-radius:22px;
+    padding:45px;
+    transform:rotate(2deg);
+    box-shadow:var(--shadow);
+    text-align:center;
+}
+
+.sticky-yellow h3{
+    margin:18px 0;
+    font-family:'Cormorant Garamond',serif;
+    font-size:34px;
+}
+
+.sticky-yellow p{
+    font-family:'Caveat',cursive;
+    font-size:34px;
+    line-height:1.8;
+}
+
+/* =====================================================
+SONG CARD
+===================================================== */
+
+.song-inner{
+    background:white;
+    border-radius:28px;
+    padding:55px 30px;
+    box-shadow:var(--shadow);
+    text-align:center;
+}
+
+.song-inner i{
+    font-size:64px;
+    color:var(--gold);
+}
+
+.song-inner h3{
+    margin:20px 0;
+    font-family:'Cormorant Garamond',serif;
+    font-size:36px;
+}
+
+.song-inner p{
+    color:var(--light);
+}
+
+/* =====================================================
+SECRET CARD
+===================================================== */
+
+.secret-inner{
+    background:#2F2F2F;
+    color:white;
+    border-radius:28px;
+    padding:50px;
+    text-align:center;
+    box-shadow:var(--shadow);
+    transition:.35s;
+}
+
+.secret-inner:hover{
+    transform:scale(1.05);
+}
+
+.secret-inner p{
+    margin-top:18px;
+    line-height:2;
+    letter-spacing:2px;
+}
+
+/* =====================================================
+ENDING CARD
+===================================================== */
+
+.ending-inner{
+    background:linear-gradient(135deg,#FFF7ED,#FFFDFB);
+    border-radius:28px;
+    padding:60px;
+    text-align:center;
+    box-shadow:var(--shadow);
+}
+
+.ending-inner h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:48px;
+}
+
+.ending-inner p{
+    margin-top:15px;
+    font-family:'Caveat',cursive;
+    font-size:34px;
+}
+
+/* =====================================================
+MODAL
+===================================================== */
+
+#modal{
+    position:fixed;
+    inset:0;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:1000;
+}
+
+.overlay{
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,.55);
+    /* iPhone Fix: Hardware acceleration for blur */
+    -webkit-backdrop-filter:blur(12px); 
+    backdrop-filter:blur(12px);
+}
+
+.viewer{
+    position:relative;
+    width:700px;
+    max-width:92%;
+    max-height:90vh;
+    background:white;
+    border-radius:30px;
+    overflow-y:auto;
+    overflow-x:hidden;
+    box-shadow:0 30px 90px rgba(0,0,0,.25);
+    z-index:2;
+}
+
+.viewer img{
+    width:100%;
+    display:block;
+    border-radius:18px;
+    transition:.6s;
+}
+
+.viewer h2{
+    padding:30px 35px 15px;
+    font-family:'Cormorant Garamond',serif;
+    font-size:42px;
+}
+
+.viewer p{
+    padding:0 35px 35px;
+    color:var(--light);
+    line-height:1.9;
+}
+
+#closeModal{
+    position:absolute;
+    top:18px;
+    right:18px;
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    background:white;
+    font-size:22px;
+    box-shadow:var(--shadow);
+}
+
+/* =====================================================
+SECRET POPUP
+===================================================== */
+
+#secretPopup{
+    position:fixed;
+    inset:0;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    background:rgba(0,0,0,.45);
+    /* Safari Fix */
+    -webkit-backdrop-filter:blur(12px);
+    backdrop-filter:blur(12px);
+    z-index:2000;
+}
+
+.secret-box{
+    width:600px;
+    max-width:92%;
+    background:white;
+    border-radius:30px;
+    padding:60px;
+    text-align:center;
+    box-shadow:0 30px 90px rgba(0,0,0,.20);
+    position:relative;
+}
+
+.secret-box h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:48px;
+    margin-bottom:25px;
+}
+
+.secret-box p{
+    color:var(--light);
+    line-height:2;
+    font-size:18px;
+}
+
+.closeSecret{
+    position:absolute;
+    top:20px;
+    right:25px;
+    font-size:36px;
+    cursor:pointer;
+}
+
+/* =====================================================
+FINAL LETTER
+===================================================== */
+
+#finalLetter{
+    position:fixed;
+    inset:0;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    background:#F7F3EE;
+    z-index:3000;
+    padding:40px;
+    overflow:hidden;
+}
+
+.letter-page{
+    width:800px;
+    max-width:95%;
+    max-height:85vh;
+    background:white;
+    border-radius:35px;
+    padding:70px;
+    box-shadow:0 25px 80px rgba(0,0,0,.12);
+    overflow-y:auto;
+    display:flex;
+    flex-direction:column;
+}
+
+.letter-date{
+    color:var(--light);
+    font-size:14px;
+}
+
+.letter-page h1{
+    margin:20px 0;
+    font-size:62px;
+    font-family:'Cormorant Garamond',serif;
+}
+
+#typewriter{
+    min-height:auto;
+    font-family:'Caveat',cursive;
+    font-size:38px;
+    line-height:1.8;
+    white-space:pre-line;
+    flex-grow:1;
+    padding:20px 0;
+}
+
+#closeLetter{
+    margin-top:40px;
+    background:#2E2E2E;
+    color:white;
+    padding:18px 40px;
+    border-radius:50px;
+    align-self:flex-start;
+}
+
+/* =====================================================
+MUSIC
+===================================================== */
+
+.music-player{
+    position:fixed;
+    bottom:35px;
+    right:35px;
+    z-index:100;
+}
+
+#musicToggle{
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    background:white;
+    box-shadow:var(--shadow);
+    font-size:28px;
+    transition:.4s;
+}
+
+#musicToggle.playing{
+    animation:spin 4s linear infinite;
+}
+
+/* =====================================================
+CURSOR GLOW
+===================================================== */
+
+#cursorGlow{
+    width:22px;
+    height:22px;
+    border-radius:50%;
+    background:rgba(199,163,106,.35);
+    position:fixed;
+    pointer-events:none;
+    transform:translate(-50%,-50%);
+    /* Safari Fix */
+    -webkit-backdrop-filter:blur(8px);
+    backdrop-filter:blur(8px);
+    z-index:9999;
+}
+
+/* =====================================================
+HEARTS
+===================================================== */
+
+#heartsContainer{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    overflow:hidden;
+}
+
+.heart{
+    position:absolute;
+    color:#E16B8C;
+    animation:floatUp 4s linear forwards;
+}
+
+/* =====================================================
+ANIMATIONS
+===================================================== */
+
+@keyframes heartbeat{
+    0%,100%{ transform:scale(1); }
+    50%{ transform:scale(1.15); }
+}
+
+@keyframes loading{
+    from{ width:0; }
+    to{ width:100%; }
+}
+
+@keyframes float{
+    0%,100%{ transform:translateY(0); }
+    50%{ transform:translateY(-18px); }
+}
+
+@keyframes spin{
+    from{ transform:rotate(0deg); }
+    to{ transform:rotate(360deg); }
+}
+
+@keyframes floatUp{
+    0%{ opacity:1; transform:translateY(0) scale(1); }
+    100%{ opacity:0; transform:translateY(-250px) scale(1.8); }
+}
+
+/* =====================================================
+RESPONSIVE (iPHONE/MOBILE OPTIMIZATIONS INCLUDED)
+===================================================== */
+
+@media(max-width:768px){
+    #album{
+        /* iPhone Notch & Swipe Bar Safe Areas */
+        padding: max(20px, env(safe-area-inset-top)) 20px max(80px, env(safe-area-inset-bottom));
+    }
+    header h1{ font-size:48px; }
+    .paper{ padding:40px; }
+    .paper h2{ font-size:40px; }
+    .paper p{ font-size:28px; }
+    
+    .letter-page{
+        padding:40px 30px;
+        max-height:80vh;
+        /* Prevent content from hiding behind notch */
+        margin: env(safe-area-inset-top) 10px env(safe-area-inset-bottom);
+    }
+    
+    .letter-page h1{ font-size:42px; }
+    #typewriter{ font-size:30px; }
+    
+    .music-player{
+        /* Adjust music button above the swipe indicator */
+        bottom: max(20px, env(safe-area-inset-bottom));
+        right:20px;
+    }
+
+    .viewer {
+        margin: env(safe-area-inset-top) 10px env(safe-area-inset-bottom);
+    }
+
+    /* -------------------------------------------
+       TOUCH OPTIMIZATIONS (DISABLE DOUBLE TAPS)
+       ------------------------------------------- */
+    .pin:hover, .photo:hover {
+        transform: none;
+        box-shadow: 0 18px 40px rgba(0,0,0,.10);
+    }
+    .photo:hover img {
+        transform: none;
+    }
+    .nav-right button:hover {
+        transform: none;
+    }
+    #openLetter:hover {
+        transform: none;
+        box-shadow: none;
+    }
+    .secret-inner:hover {
+        transform: none;
+    }
+    
+    /* Hide cursor glow on touch devices */
+    #cursorGlow {
+        display: none;
+    }
+}
+
+/* =======================================
+SPOTIFY POPUP
+======================================= */
+
+#spotifyPopup{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.45);
+    /* Safari Fix */
+    -webkit-backdrop-filter:blur(18px);
+    backdrop-filter:blur(18px);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:5000;
+}
+
+.spotify-card{
+    width:420px;
+    max-width:90%;
+    background:white;
+    border-radius:30px;
+    padding:45px;
+    text-align:center;
+    position:relative;
+    box-shadow:0 30px 80px rgba(0,0,0,.18);
+    animation:popup .35s ease;
+}
+
+.spotifyIcon{
+    font-size:75px;
+    color:#1DB954;
+}
+
+.spotify-card h2{
+    margin-top:20px;
+    font-family:'Cormorant Garamond',serif;
+    font-size:42px;
+}
+
+.spotify-card p{
+    margin:20px 0 35px;
+    color:#666;
+    line-height:1.8;
+    animation:popup .45s cubic-bezier(.22,1,.36,1);
+}
+
+#playSpotify{
+    background:#1DB954;
+    color:white;
+    border:none;
+    padding:16px 28px;
+    border-radius:50px;
+    font-size:17px;
+    transition:.3s;
+}
+
+#playSpotify:hover{
+    transform:translateY(-4px) scale(1.03);
+    box-shadow:0 15px 35px rgba(29,185,84,.35);
+}
+
+#closeSpotify{
+    position:absolute;
+    top:15px;
+    right:15px;
+    background:none;
+    font-size:24px;
+}
+
+@keyframes popup{
+    0%{ opacity:0; transform:translateY(40px) scale(.9); }
+    100%{ opacity:1; transform:translateY(0) scale(1); }
+}
+
+/* =======================================
+MAGIC LETTER
+======================================= */
+
+#magicLetter{
+    position:fixed;
+    inset:0;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+}
+
+.letter-overlay{
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,.65);
+    /* Safari Fix */
+    -webkit-backdrop-filter:blur(10px);
+    backdrop-filter:blur(10px);
+}
+
+.letter-container{
+    position:relative;
+    z-index:2;
+    animation:letterOpen .7s cubic-bezier(.22,1,.36,1);
+}
+
+.parchment{
+    width:700px;
+    max-width:90vw;
+    max-height:90vh;
+    overflow:auto;
+    border-radius:18px;
+    box-shadow:0 35px 80px rgba(0,0,0,.45);
+    background:#d8c3a5;
+}
+
+.parchment img{
+    display:block;
+    width:100%;
+    height:auto;
+}
+
+#closeMagicLetter{
+    position:absolute;
+    top:-20px;
+    right:-20px;
+    width:52px;
+    height:52px;
+    border:none;
+    border-radius:50%;
+    background:white;
+    font-size:28px;
+    cursor:pointer;
+    box-shadow:0 10px 30px rgba(0,0,0,.25);
+    transition:.3s;
+}
+
+#closeMagicLetter:hover{
+    transform:rotate(90deg) scale(1.1);
+}
+
+@keyframes letterOpen{
+    0%{ opacity:0; transform:scale(.75) rotateX(35deg); }
+    100%{ opacity:1; transform:scale(1) rotateX(0); }
+}
+
+.letter-view{
+    animation:letterMagic .7s cubic-bezier(.22,1,.36,1);
+}
+
+@keyframes letterMagic{
+    0%{ opacity:0; transform:scale(.7) rotateX(35deg); }
+    100%{ opacity:1; transform:scale(1) rotateX(0); }
+}
